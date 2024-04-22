@@ -29,6 +29,7 @@ _type_map = {
     'time': types.TIME,
     'TIME': types.TIME,
     'datetime64[ns]': types.DATETIME,
+    'datetime64[ms]': types.DATETIME,
     'timestamp': types.TIMESTAMP,
     'TIMESTAMP': types.TIMESTAMP,
     'varchar': types.VARCHAR,
@@ -40,6 +41,7 @@ _type_map = {
 
 
 def run_query(query, flightclient=None, options=None):
+    print(query)
     info = flightclient.get_flight_info(flight.FlightDescriptor.for_command(query), options)
     reader = flightclient.do_get(info.endpoints[0].ticket, options)
 
